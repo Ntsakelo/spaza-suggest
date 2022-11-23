@@ -22,18 +22,33 @@ export default function SpazaSuggest (db){
 
     // return all areas
     async function areas() {
-        const areas = await db.manyOrNone(`select * from area order by area_name asc`)
-        return areas;
+        try{
+            const areas = await db.manyOrNone(`select * from area order by area_name asc`)
+            return areas;
+
+        }catch(err){
+            console.log(err)
+        }
     }
 
     async function findAreaByName(name) {
-        const area = await db.oneOrNone(`select * from area where area_name = $1`, [name])
-        return area;
+        try{
+            const area = await db.oneOrNone(`select * from area where area_name = $1`, [name])
+            return area;
+
+        }catch(err){
+            console.log(err)
+        }
     }
 
     async function suggestProduct(areaId, clientId, suggestion) {
-        await db.none(`insert into suggestion(area_id, client_id, product_name) values ($1, $2, $3)`, 
-            [areaId, clientId, suggestion])
+        try{
+            await db.none(`insert into suggestion(area_id, client_id, product_name) values ($1, $2, $3)`, 
+                [areaId, clientId, suggestion])
+
+        }catch(err){
+            console.log(err)
+        }
     }
 
     async function suggestionsForArea(areaId) {
