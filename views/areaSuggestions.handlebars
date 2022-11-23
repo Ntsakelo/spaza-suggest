@@ -1,0 +1,19 @@
+<div class="areaSuggestions">
+  <table>
+    <thead>
+      <th>Suggestions</th>
+      <th>Area</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      {{#each suggestions}}
+        <tr>
+          <td>{{this.product_name}}</td>
+          <td><a href="/spaza/accept/{{this.id}}"><button
+              >Accept</button></a></td>
+        </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+</div>
