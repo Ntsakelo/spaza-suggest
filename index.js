@@ -55,7 +55,7 @@ app.post("/suggest", spazaRoutes.suggest);
 app.get("/spazaRegister", spazaRoutes.showShopRegister);
 app.post("/spaza", spazaRoutes.registerShop);
 app.get("/areaSuggestions", spazaRoutes.showAreaSuggestions);
-// app.get("/spaza/accept/:id", spazaRoutes.accept);
+app.get("/spaza/accept/:id", spazaRoutes.accept);
 let port = process.env.PORT || 4002;
 
 app.listen(port, function () {

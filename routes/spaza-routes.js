@@ -100,9 +100,22 @@ export default function spazaRoutes(spazaSuggest) {
   async function showAreaSuggestions(req, res, next) {
     try {
       let areaId = req.session.spaza.area_id;
+      let spazaId = req.session.spaza.id;
       res.render("areaSuggestions", {
         suggestions: await spazaSuggest.suggestionsForArea(areaId),
+        accepted: await spazaSuggest.acceptedSuggestions(spazaId),
       });
+    } catch (err) {
+      next(err);
+    }
+  }
+  async function accept(req, res, next) {
+    try {
+      let suggestionId = req.params.id;
+      let spazaId = req.session.spaza.id;
+      await spazaSuggest.acceptSuggestion(suggestionId, spazaId);
+
+      res.redirect("/areaSuggestions");
     } catch (err) {
       next(err);
     }
@@ -117,5 +130,6 @@ export default function spazaRoutes(spazaSuggest) {
     showShopRegister,
     registerShop,
     showAreaSuggestions,
+    accept,
   };
 }

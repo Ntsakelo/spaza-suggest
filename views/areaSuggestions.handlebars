@@ -2,7 +2,7 @@
   <table>
     <thead>
       <th>Suggestions</th>
-      <th>Area</th>
+
       <th>Action</th>
     </thead>
     <tbody>
@@ -14,6 +14,20 @@
         </tr>
       {{/each}}
     </tbody>
+  </table>
+  <table>
+    <thead>
+      <th>Suggestions</th>
+      <th>Status</th>
+    </thead>
+    <tbody>
+      {{#each accepted}}
+        <tr>
+          <td>{{this.product_name}}</td>
+          <td>Accepted</td>
 
+        </tr>
+      {{/each}}
+    </tbody>
   </table>
 </div>
