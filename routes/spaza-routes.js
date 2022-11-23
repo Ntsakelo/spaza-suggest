@@ -104,6 +104,7 @@ export default function spazaRoutes(spazaSuggest) {
       res.render("areaSuggestions", {
         suggestions: await spazaSuggest.suggestionsForArea(areaId),
         accepted: await spazaSuggest.acceptedSuggestions(spazaId),
+        area: req.session.spaza.shop_name,
       });
     } catch (err) {
       next(err);
@@ -120,6 +121,18 @@ export default function spazaRoutes(spazaSuggest) {
       next(err);
     }
   }
+  async function logout(req, res, next) {
+    try {
+      if (req.session.spaza) {
+        delete req.session.spaza;
+      } else if (req.session.user) {
+        delete req.session.user;
+      }
+      res.redirect("/");
+    } catch (err) {
+      next(err);
+    }
+  }
   return {
     showLogin,
     showRegister,
@@ -131,5 +144,6 @@ export default function spazaRoutes(spazaSuggest) {
     registerShop,
     showAreaSuggestions,
     accept,
+    logout,
   };
 }

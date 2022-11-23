@@ -1,28 +1,30 @@
-<div class="suggest">
-    <form action="/suggest" method="post">
-     <input type="text" name="productname" placeholder="Enter Product">
-     <select name="places" id="area">
-        {{#each places}}
-        <option value='{{this.area_name}}'>{{this.area_name}}</option>
+<div class="suggest project" id="suggest">
+  <form action="/suggest" method="post">
+    <h1>Welcome to the suggestions</h1>
+    <input type="text" name="productname" placeholder="Enter Product" />
+    <select name="places" id="area">
+      {{#each places}}
+        <option value="{{this.area_name}}">{{this.area_name}}</option>
+      {{/each}}
+    </select>
+    <button class="suggestBtn">Suggest</button>
+  </form>
+  <div class="mySuggestions">
+    <h1>My Suggestions</h1>
+    <table>
+      <thead>
+        <th>Suggetion</th>
+        <th>Area</th>
+      </thead>
+      <tbody>
+        {{#each suggestions}}
+          <tr>
+            <td>{{this.product_name}}</td>
+            <td>{{this.area_name}}</td>
+          </tr>
         {{/each}}
-     </select>
-     <button class="suggestBtn">Suggest</button>
-    </form>
-    <div class="mySuggestions">
-        <h1>My Suggestions</h1>
-        <table>
-        <thead>
-           <th>Suggetion</th>
-           <th>Area</th>
-        </thead>
-        <tbody>
-            {{#each suggestions}}
-           <tr>
-             <td>{{this.product_name}}</td>
-             <td>{{this.area_name}}</td>
-           </tr>
-           {{/each}}
-        </tbody>
-        </table>
-    </div>
+      </tbody>
+    </table>
+    <a href="/logout" class="logOut">Logout</a>
+  </div>
 </div>

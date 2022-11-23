@@ -1,14 +1,15 @@
-<div class="spaza">
+<div class="spaza project">
   <form action="/spaza" method="POST">
+    <h1>Register spaza</h1>
+    <div class="codeDiv">
+      <p>{{messages.registerShop}}</p>
+    </div>
     <input type="text" name="shopname" placeholder="Shop name" />
     <select name="shoparea" id="shopArea">
       {{#each areas}}
         <option value="{{this.area_name}}">{{this.area_name}}</option>
       {{/each}}
     </select>
-    <div class="codeDiv">
-      <p>{{messages.registerShop}}</p>
-    </div>
     <button class="registerSpazaBtn">Register</button>
     <a href="/">Already have an account</a>
   </form>

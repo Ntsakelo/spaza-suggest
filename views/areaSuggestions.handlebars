@@ -1,33 +1,38 @@
-<div class="areaSuggestions">
-  <table>
-    <thead>
-      <th>Suggestions</th>
+<div class="areaSuggestions project">
+  <div class="main">
+    <h1>Suggestions for {{area}}</h1>
+    <table>
+      <thead>
+        <th>Suggestions</th>
 
-      <th>Action</th>
-    </thead>
-    <tbody>
-      {{#each suggestions}}
-        <tr>
-          <td>{{this.product_name}}</td>
-          <td><a href="/spaza/accept/{{this.id}}"><button
-              >Accept</button></a></td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-  <table>
-    <thead>
-      <th>Suggestions</th>
-      <th>Status</th>
-    </thead>
-    <tbody>
-      {{#each accepted}}
-        <tr>
-          <td>{{this.product_name}}</td>
-          <td>Accepted</td>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        {{#each suggestions}}
+          <tr>
+            <td>{{this.product_name}}</td>
+            <td><a href="/spaza/accept/{{this.id}}"><button
+                >Accept</button></a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <h3>Accepeted Suggestions</h3>
+    <table>
+      <thead>
+        <th>Suggestions</th>
+        <th>Status</th>
+      </thead>
+      <tbody>
+        {{#each accepted}}
+          <tr>
+            <td>{{this.product_name}}</td>
+            <td>Accepted</td>
 
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <a href="/logout" class="logOut">Logout</a>
+  </div>
 </div>

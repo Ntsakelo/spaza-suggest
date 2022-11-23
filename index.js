@@ -48,14 +48,33 @@ const spazaSuggest = SpazaSuggest(db);
 const spazaRoutes = SpazaRoutes(spazaSuggest);
 app.get("/", spazaRoutes.showLogin);
 app.get("/register", spazaRoutes.showRegister);
-app.get("/suggest", spazaRoutes.showSuggest);
 app.post("/clientRegister", spazaRoutes.registerClient);
+app.use(function (req, res, next) {
+  let user = req.session.user;
+  let spaza = req.session.spaza;
+
+  if (
+    req.path === "/" ||
+    req.path === "/register" ||
+    req.path === "/spazaRegister"
+  ) {
+    next();
+  } else {
+    if (!user || !spaza) {
+      res.redirect("/");
+    } else if (user || spaza) {
+      next();
+    }
+  }
+});
 app.post("/clientLogin", spazaRoutes.loginClient);
-app.post("/suggest", spazaRoutes.suggest);
 app.get("/spazaRegister", spazaRoutes.showShopRegister);
+app.get("/suggest", spazaRoutes.showSuggest);
+app.post("/suggest", spazaRoutes.suggest);
 app.post("/spaza", spazaRoutes.registerShop);
 app.get("/areaSuggestions", spazaRoutes.showAreaSuggestions);
 app.get("/spaza/accept/:id", spazaRoutes.accept);
+app.get("/logout", spazaRoutes.logout);
 let port = process.env.PORT || 4002;
 
 app.listen(port, function () {

@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.project {
+  height: 100vh;
+  width: 100%;
+  background-color: darkviolet;
+  position: absolute;
+}
+h1,
+h3 {
+  color: darkviolet;
+}
+form,
+.main {
+  text-align: center;
+  height: 300px;
+  width: 90%;
+  border: 1px solid darkviolet;
+  background-color: white;
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+}
+input,
+button,
+a,
+select {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.codeDiv {
+  height: 20px;
+  width: 100%;
+  /* border: 1px solid red; */
+
+  margin-bottom: 10px;
+  text-align: center;
+}
+input,
+select {
+  height: 30px;
+  outline: none;
+  box-shadow: 5px 5px 5px 5px rgb(214, 213, 213);
+  border: none;
+}
+button {
+  height: 30px;
+  background-color: rgb(164, 71, 204);
+  color: white;
+  border: none;
+}
+a {
+  color: grey;
+  width: 190px;
+}
+a:hover {
+  color: rgb(164, 71, 204);
+}
+table {
+  width: 100%;
+  border: 1px solid;
+}
+th {
+  border: 1px solid;
+}
+tr {
+  border: 1px solid;
+}
+td {
+  border: 1px solid;
+}
+.main {
+  overflow: auto;
+  height: 500px;
+}
+.logOut {
+  margin-top: 10px;
+}
+#suggest {
+  height: 1000px;
+}
+.mySuggestions {
+  background-color: white;
+  height: 500px;
+  width: 90%;
+  margin: auto;
+}
