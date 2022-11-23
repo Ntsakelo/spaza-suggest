@@ -46,27 +46,27 @@ app.use(express.static("public"));
 //factory functions
 const spazaSuggest = SpazaSuggest(db);
 const spazaRoutes = SpazaRoutes(spazaSuggest);
+// app.use(function (req, res, next) {
+//   let user = req.session.user;
+//   let spaza = req.session.spaza;
+
+//   if (
+//     req.path === "/" ||
+//     req.path === "/register" ||
+//     req.path === "/spazaRegister"
+//   ) {
+//     next();
+//   } else {
+//     if (!user || !spaza) {
+//       res.redirect("/");
+//     } else if (user || spaza) {
+//       next();
+//     }
+//   }
+// });
 app.get("/", spazaRoutes.showLogin);
 app.get("/register", spazaRoutes.showRegister);
 app.post("/clientRegister", spazaRoutes.registerClient);
-app.use(function (req, res, next) {
-  let user = req.session.user;
-  let spaza = req.session.spaza;
-
-  if (
-    req.path === "/" ||
-    req.path === "/register" ||
-    req.path === "/spazaRegister"
-  ) {
-    next();
-  } else {
-    if (!user || !spaza) {
-      res.redirect("/");
-    } else if (user || spaza) {
-      next();
-    }
-  }
-});
 app.post("/clientLogin", spazaRoutes.loginClient);
 app.get("/spazaRegister", spazaRoutes.showShopRegister);
 app.get("/suggest", spazaRoutes.showSuggest);
